@@ -27,8 +27,8 @@ public class MainActivity extends AppCompatActivity {
         btnRetrieve.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent goToRetrievalActivity = new Intent(getApplicationContext(), RetrievalActivity.class);
-                startActivity(goToRetrievalActivity);
+                Intent goToLoginActivity = new Intent(getApplicationContext(), LoginActivity.class);
+                startActivity(goToLoginActivity);
             }
         });
 

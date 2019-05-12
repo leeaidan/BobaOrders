@@ -14,4 +14,18 @@
         android:layout_height="wrap_content"
         tools:layout_editor_absoluteX="30dp"
         tools:layout_editor_absoluteY="53dp" />
+
+    <LinearLayout
+        android:id="@+id/loginSuccess"
+        android:layout_width="395dp"
+        android:layout_height="268dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"></LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
