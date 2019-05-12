@@ -37,8 +37,7 @@ public class LoginActivity extends AppCompatActivity {
                     Intent goToRetrieval = new Intent(LoginActivity.this
                             , RetrievalActivity.class);
                     startActivity(goToRetrieval);
-                    Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                            .setAction("Action", null).show();
+
                 }
 
             }
