@@ -26,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
 
         Toolbar tb = findViewById(R.id.toolbar);
         setSupportActionBar(tb);
+        tb.setNavigationIcon(R.drawable.ic_launcher_foreground);
+
 
         img = (ImageView) findViewById(R.id.bobalogo);
 //        getScaleLogo(img);
@@ -38,6 +40,14 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent goToLoginActivity = new Intent(getApplicationContext(), LoginActivity.class);
                 startActivity(goToLoginActivity);
+            }
+        });
+
+        btnOrder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent goToOrdering = new Intent(getApplicationContext(),OrderMainActivity.class);
+                startActivity(goToOrdering);
             }
         });
 

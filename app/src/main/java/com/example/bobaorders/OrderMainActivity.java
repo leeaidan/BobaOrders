@@ -1,5 +1,6 @@
 package com.example.bobaorders;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -11,13 +12,12 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 
-public class RetrievalActivity extends AppCompatActivity {
+public class OrderMainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        setContentView(R.layout.activity_retrieval);
+        setContentView(R.layout.activity_order_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -25,10 +25,6 @@ public class RetrievalActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
-
-
-        Snackbar loginSuccess = Snackbar.make(findViewById(R.id.loginSuccess), "Login Successful", Snackbar.LENGTH_LONG);
-        loginSuccess.show();
 
 
         FloatingActionButton fab = findViewById(R.id.fab);
@@ -51,5 +47,4 @@ public class RetrievalActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
 }
