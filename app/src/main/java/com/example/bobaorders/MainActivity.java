@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar tb = findViewById(R.id.toolbar);
         setSupportActionBar(tb);
         tb.setNavigationIcon(R.drawable.ic_launcher_foreground);
+        getSupportActionBar().setTitle("Boba;Orders");
 
 
         img = (ImageView) findViewById(R.id.bobalogo);

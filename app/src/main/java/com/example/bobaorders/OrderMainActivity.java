@@ -20,6 +20,7 @@ public class OrderMainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_order_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Make Your Orders");
 
         if(getSupportActionBar() !=null){
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
