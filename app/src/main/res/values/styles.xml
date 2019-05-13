@@ -21,6 +21,7 @@
         <item name="android:colorButtonNormal">@color/colorPrimary</item>
         <item
             name="android:colorControlHighlight">@color/colorAccent</item>
+
     </style>
 
 </resources>
