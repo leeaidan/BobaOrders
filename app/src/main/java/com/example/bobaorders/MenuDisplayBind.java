@@ -1,10 +1,10 @@
 package com.example.bobaorders;
 
-public class MenuItem {
+public class MenuDisplayBind {
     private String name;
     private int price;
 
-    public MenuItem(String name, int price) {
+    public MenuDisplayBind(String name, int price) {
         this.name = name;
         this.price = price;
     }
