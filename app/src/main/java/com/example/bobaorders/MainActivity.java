@@ -51,10 +51,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(goToOrdering);
             }
         });
-
-
-
-
     }
 
     private void getScaleLogo(ImageView img){
