@@ -9,10 +9,13 @@
     >
 
     <LinearLayout
+        android:id="@+id/root"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:orientation="vertical"
         android:background="#121111"
+        android:clickable="true"
+        android:focusable="true"
         >
 
 
@@ -27,7 +30,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/price_display"
+            android:id="@+id/item_price"
             android:textColor="#ffff"
             android:textSize="15dp"
             android:text="Person_Name"

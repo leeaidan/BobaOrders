@@ -2,9 +2,12 @@ package com.example.bobaorders;
 
 public class MenuDisplayBind {
     private String name;
-    private int price;
+    private String price;
 
-    public MenuDisplayBind(String name, int price) {
+    public MenuDisplayBind(){
+
+    }
+    public MenuDisplayBind(String name, String price) {
         this.name = name;
         this.price = price;
     }
@@ -17,11 +20,11 @@ public class MenuDisplayBind {
         this.name = name;
     }
 
-    public int getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(String price) {
         this.price = price;
     }
 }
