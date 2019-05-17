@@ -23,15 +23,20 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.HashMap;
+import java.util.Map;
+
 
 public class OrderMainActivity extends AppCompatActivity {
     private RecyclerView menuList;
-
+    private Button submit;
     private LinearLayoutManager llm;
+    private TextView owo;
     FirebaseRecyclerAdapter adapter;
     Query query;
 
@@ -49,8 +54,21 @@ public class OrderMainActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
 
-        menuList =  findViewById(R.id.Menu_List);
 
+        menuList =  findViewById(R.id.Menu_List);
+        submit = findViewById(R.id.buttonSubmit);
+        owo = findViewById(R.id.editText);
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("drinkList").push();
+                Map<String, Object> map = new HashMap<>();
+                map.put("name", owo.getText().toString());
+                map.put("price", "$3.75");
+
+                databaseReference.setValue(map);
+            }
+        });
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
