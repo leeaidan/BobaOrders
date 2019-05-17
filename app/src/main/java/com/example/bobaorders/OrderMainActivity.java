@@ -9,6 +9,7 @@ import com.google.android.material.snackbar.Snackbar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -36,6 +37,15 @@ public class OrderMainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        Drink d = new Drink("Aidalyn Boba xD", 10000);
+        MainActivity.appendDrinkToDatabase(d);
+
+        String s = "";
+        for(Drink drink : MainActivity.getCompiledDrinks()){
+            s += drink + "\n";
+        }
+        Log.i("Aidalyn", s);
     }
 
     @Override
