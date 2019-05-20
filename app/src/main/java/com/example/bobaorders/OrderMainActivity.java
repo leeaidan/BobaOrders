@@ -28,6 +28,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -39,6 +40,7 @@ public class OrderMainActivity extends AppCompatActivity {
     private TextView owo;
     FirebaseRecyclerAdapter adapter;
     Query query;
+    private OnItemClickListener listener;
 
 
     @Override
@@ -105,7 +107,7 @@ public class OrderMainActivity extends AppCompatActivity {
                         menuHolder.root.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                Toast.makeText(OrderMainActivity.this, String.valueOf(i), Toast.LENGTH_LONG);
+                                Toast.makeText(OrderMainActivity.this, "WOw", Toast.LENGTH_LONG);
                             }
                         });
                     }
@@ -114,6 +116,7 @@ public class OrderMainActivity extends AppCompatActivity {
                     @Override
                     public MenuHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
                         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.view_menu, parent, false);
+
                         return new MenuHolder(view);
                     }
                 };
@@ -128,11 +131,20 @@ public class OrderMainActivity extends AppCompatActivity {
         public TextView mPrice;
 
 
+
         public MenuHolder(View itemView) {
             super(itemView);
             root = itemView.findViewById(R.id.root);
             mTitle = itemView.findViewById(R.id.item_title);
             mPrice = itemView.findViewById(R.id.item_price);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    listener.onItemClick(v, getAdapterPosition());
+
+                }
+            });
         }
 
 
@@ -144,6 +156,12 @@ public class OrderMainActivity extends AppCompatActivity {
         public void setTxtPrice(String str) {
             mPrice.setText(str);
         }
+
+
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener){
+        this.listener = listener;
     }
 
     @Override
