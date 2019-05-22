@@ -10,9 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".SubmitOrder"
+            android:label="@string/title_activity_submit_order"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
             android:name=".OrderMainActivity"
             android:label="@string/title_activity_order_main"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".LoginActivity"
             android:label="@string/title_activity_login"
