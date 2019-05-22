@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="iceValues">
+        <item>100% Ice</item>
+        <item>80% Ice</item>
+        <item>30% Ice</item>
+        <item>No Ice</item>
+
+    </string-array>
+</resources>
