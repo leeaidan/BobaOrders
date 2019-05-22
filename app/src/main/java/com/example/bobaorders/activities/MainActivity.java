@@ -1,6 +1,5 @@
-package com.example.bobaorders;
+package com.example.bobaorders.activities;
 
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -9,11 +8,11 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.Display;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+
+import com.example.bobaorders.R;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -47,10 +46,12 @@ public class MainActivity extends AppCompatActivity {
         btnOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent goToOrdering = new Intent(getApplicationContext(),OrderMainActivity.class);
+                Intent goToOrdering = new Intent(getApplicationContext(), OrderMainActivity.class);
                 startActivity(goToOrdering);
             }
         });
+
+
     }
 
     private void getScaleLogo(ImageView img){

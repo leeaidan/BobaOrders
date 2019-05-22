@@ -10,22 +10,22 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".SubmitOrder"
+            android:name=".activities.SubmitOrder"
             android:label="@string/title_activity_submit_order"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
-            android:name=".OrderMainActivity"
+            android:name=".activities.OrderMainActivity"
             android:label="@string/title_activity_order_main"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".activities.LoginActivity"
             android:label="@string/title_activity_login"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".RetrievalActivity"
+            android:name=".activities.RetrievalActivity"
             android:label="@string/title_activity_retrieval"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
