@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="sweetness_array">
+        <item>0% Sweetness</item>
+        <item>25% Sweetness</item>
+        <item>50% Sweetness</item>
+        <item>75% Sweetness</item>
+        <item>100% Sweetness</item>
+        <item>110% Sweetness</item>
+    </string-array>
+
+        
+
+</resources>

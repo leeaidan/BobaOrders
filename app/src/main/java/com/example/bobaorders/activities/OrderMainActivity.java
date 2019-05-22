@@ -1,5 +1,6 @@
 package com.example.bobaorders.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.bobaorders.Drink;
@@ -107,7 +108,11 @@ public class OrderMainActivity extends AppCompatActivity {
                 Log.i("on click", "At position " + position + " is " + drink.getName());
                 Toast.makeText(OrderMainActivity.this, "At position " + position + " is " + drink.getName() + " which costs " + drink.getPrice(), Toast.LENGTH_SHORT).show();
 
-                //TODO: Start the submit order activity here
+                Intent goToSubmission = new Intent(getApplicationContext(), SubmitOrder.class);
+                goToSubmission.putExtra("com.example.activities.DRINK_NAME", drink.getName());
+                goToSubmission.putExtra("com.example.activities.DRINK_PRICE", drink.getPrice());
+
+                startActivity(goToSubmission);
             }
         });
 
