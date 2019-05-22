@@ -1,45 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="wrap_content"
-    xmlns:app = "http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    app:cardCornerRadius="5dp"
-    android:elevation="20dp"
-    android:layout_margin="7dp"
-
-    >
-
-    <LinearLayout
-        android:id="@+id/root"
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
+    <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        xmlns:app = "http://schemas.android.com/apk/res-auto"
         android:orientation="vertical"
-        android:background="@color/colorAccent"
-        android:clickable="true"
-        android:focusable="true"
+
+        android:elevation="20dp"
+        android:layout_marginBottom="1dp"
+
+        app:cardUseCompatPadding="true"
+
         >
 
-
-        <TextView
-            android:id="@+id/item_title"
+        <LinearLayout
+            android:id="@+id/root"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="POST TITLE"
-            android:textColor="#ffff"
-            android:textSize="25dp" />
+            android:layout_height="70dp"
+            android:orientation="vertical"
+            android:background="@color/colorPrimaryLight"
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/item_price"
-            android:textColor="#ffff"
-            android:textSize="15dp"
-            android:text="Person_Name"
-
-            />
+            >
 
 
+            <TextView
+                android:id="@+id/item_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="POST TITLE"
+                android:textColor="#ffff"
+                android:textSize="25dp"
 
-    </LinearLayout>
+                android:layout_marginLeft="5dp"
+                />
 
-</androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/item_price"
+                android:textColor="#ffff"
+                android:textSize="15dp"
+                android:text="Person_Name"
+                android:layout_marginLeft="5dp"
+
+                />
+
+
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>

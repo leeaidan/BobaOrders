@@ -1,5 +1,7 @@
 package com.example.bobaorders;
 
+import android.content.Intent;
+import android.nfc.Tag;
 import android.os.Bundle;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -11,6 +13,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
+import com.google.firebase.database.core.utilities.Utilities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,22 +21,30 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 
+import java.util.HashMap;
+import java.util.Map;
+
+
 public class OrderMainActivity extends AppCompatActivity {
     private RecyclerView menuList;
-
+    private Button submit;
     private LinearLayoutManager llm;
+    private TextView owo;
     FirebaseRecyclerAdapter adapter;
     Query query;
+    private OnItemClickListener listener;
 
 
     @Override
@@ -49,8 +60,21 @@ public class OrderMainActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
 
-        menuList =  findViewById(R.id.Menu_List);
 
+        menuList =  findViewById(R.id.Menu_List);
+        submit = findViewById(R.id.buttonSubmit);
+        owo = findViewById(R.id.editText);
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("drinkList").push();
+                Map<String, Object> map = new HashMap<>();
+                map.put("name", owo.getText().toString());
+                map.put("price", "$3.75");
+
+                databaseReference.setValue(map);
+            }
+        });
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,15 +111,31 @@ public class OrderMainActivity extends AppCompatActivity {
                         menuHolder.root.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                Toast.makeText(OrderMainActivity.this, String.valueOf(i), Toast.LENGTH_LONG);
+                                Toast.makeText(OrderMainActivity.this, "WOw", Toast.LENGTH_LONG);
                             }
                         });
+
+
+                        menuHolder.setOnItemClickListener(new OnItemClickListener() {
+                            @Override
+                            public void onItemClick(View v, int position) {
+                                Intent goToSubmission = new Intent(getApplicationContext(), SubmitOrder.class);
+                                startActivity(goToSubmission);
+
+                            }
+                        });
+
+
+
+
                     }
 
                     @NonNull
                     @Override
                     public MenuHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
                         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.view_menu, parent, false);
+
+
                         return new MenuHolder(view);
                     }
                 };
@@ -104,29 +144,8 @@ public class OrderMainActivity extends AppCompatActivity {
     }
 
 
-    public class MenuHolder extends RecyclerView.ViewHolder {
-        public LinearLayout root;
-        public TextView mTitle;
-        public TextView mPrice;
 
 
-        public MenuHolder(View itemView) {
-            super(itemView);
-            root = itemView.findViewById(R.id.root);
-            mTitle = itemView.findViewById(R.id.item_title);
-            mPrice = itemView.findViewById(R.id.item_price);
-        }
-
-
-        public void setTxtTitle(String str) {
-            mTitle.setText(str);
-
-        }
-
-        public void setTxtPrice(String str) {
-            mPrice.setText(str);
-        }
-    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
