@@ -5,6 +5,8 @@ import android.os.Bundle;
 import com.example.bobaorders.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -13,9 +15,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class SubmitOrder extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     TextView displayItem;
@@ -24,6 +30,9 @@ public class SubmitOrder extends AppCompatActivity implements AdapterView.OnItem
     String getDrinkPrice;
     Spinner sweetnessSpinner;
     Spinner iceSpinner;
+
+    Button submit;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,10 +77,25 @@ public class SubmitOrder extends AppCompatActivity implements AdapterView.OnItem
         iceSpinner.setOnItemSelectedListener(this);
 
 
+        //TODO: This is your job Aidan xDDDDDD
+        //So I actually have no idea how Buttons work so you're gonna need to check my work on this, I just copy pasted from OrderMainActivity
+        submit = findViewById(R.id.buttonSubmit);
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("drinkList").push();
+                Map<String, Object> map = new HashMap<>();
+                map.put("name", getdrinkItem);
+                map.put("price", getDrinkPrice);
+                //map.put("ice", ICELEVEL);
+                //map.put("sweetness", SWEETNESSLEVEL);
+                //map.put("toppings", TOPPINGARRAY);
 
-
-
-
+                //All I did was add the rest of the fields, you need to complete it cuz i dunno how to get the data from this code
+                //Note that the toppings are an array, check Drink class for more info on how it works
+                databaseReference.setValue(map);
+            }
+        });
 
 
     }

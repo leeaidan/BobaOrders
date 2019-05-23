@@ -84,7 +84,6 @@ public class OrderMainActivity extends AppCompatActivity {
         menuList.setLayoutManager(llm);
         fetchData();
 
-
     }
 
     private void fetchData() {
