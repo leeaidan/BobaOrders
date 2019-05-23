@@ -13,9 +13,11 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,8 +30,11 @@ public class SubmitOrder extends AppCompatActivity implements AdapterView.OnItem
     TextView drinkPrice;
     String getdrinkItem;
     String getDrinkPrice;
+    String finalIce;
+    String finalSweetness;
     Spinner sweetnessSpinner;
     Spinner iceSpinner;
+    TextView nameField;
 
     Button submit;
 
@@ -44,6 +49,19 @@ public class SubmitOrder extends AppCompatActivity implements AdapterView.OnItem
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("orders").push();
+                Map<String, Object> map = new HashMap<>();
+                map.put("submittername", nameField.toString());
+                map.put("drink", getdrinkItem);
+                map.put("price", getDrinkPrice);
+                map.put("ice", finalIce);
+                map.put("sweetness", finalSweetness);
+
+                //map.put("toppings", TOPPINGARRAY);
+
+                //All I did was add the rest of the fields, you need to complete it cuz i dunno how to get the data from this code
+                //Note that the toppings are an array, check Drink class for more info on how it works
+                databaseReference.setValue(map);
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
@@ -58,6 +76,7 @@ public class SubmitOrder extends AppCompatActivity implements AdapterView.OnItem
         drinkPrice = findViewById(R.id.totalPrice);
         sweetnessSpinner = findViewById(R.id.sweetnessSelector);
         iceSpinner = findViewById(R.id.iceSelector);
+        nameField = findViewById(R.id.nameField);
 
 
         getdrinkItem = getIntent().getExtras().getString("com.example.activities.DRINK_NAME");
@@ -79,23 +98,8 @@ public class SubmitOrder extends AppCompatActivity implements AdapterView.OnItem
 
         //TODO: This is your job Aidan xDDDDDD
         //So I actually have no idea how Buttons work so you're gonna need to check my work on this, I just copy pasted from OrderMainActivity
-        submit = findViewById(R.id.buttonSubmit);
-        submit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("drinkList").push();
-                Map<String, Object> map = new HashMap<>();
-                map.put("name", getdrinkItem);
-                map.put("price", getDrinkPrice);
-                //map.put("ice", ICELEVEL);
-                //map.put("sweetness", SWEETNESSLEVEL);
-                //map.put("toppings", TOPPINGARRAY);
+    //    submit = findViewById(R.id.buttonSubmit);
 
-                //All I did was add the rest of the fields, you need to complete it cuz i dunno how to get the data from this code
-                //Note that the toppings are an array, check Drink class for more info on how it works
-                databaseReference.setValue(map);
-            }
-        });
 
 
     }
@@ -111,19 +115,26 @@ public class SubmitOrder extends AppCompatActivity implements AdapterView.OnItem
         return super.onOptionsItemSelected(item);
     }
 
+
+    public void onCheckboxClicked(View view){
+        boolean checked = ((CheckBox) view).isChecked();
+
+    }
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        String sugarLevel = parent.getItemAtPosition(position).toString();
-        String iceLevel = parent.getItemAtPosition(position).toString();
 
-        Toast.makeText(parent.getContext(),sugarLevel, Toast.LENGTH_LONG ).show();
-        Toast.makeText(parent.getContext(), iceLevel, Toast.LENGTH_LONG).show();
+        if(parent.getId() == R.id.iceSelector) {
+            finalIce = parent.getItemAtPosition(position).toString();
+        } else if(parent.getId() == R.id.sweetnessSelector){
+            finalSweetness = parent.getItemAtPosition(position).toString();
+        }
+
     }
+
+
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 
     }
-
-
 }
