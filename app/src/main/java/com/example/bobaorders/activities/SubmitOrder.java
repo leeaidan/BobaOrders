@@ -25,18 +25,12 @@ import android.widget.Toast;
 import java.util.HashMap;
 import java.util.Map;
 
-public class SubmitOrder extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
-    TextView displayItem;
-    TextView drinkPrice;
-    String getdrinkItem;
-    String getDrinkPrice;
-    String finalIce;
-    String finalSweetness;
-    Spinner sweetnessSpinner;
-    Spinner iceSpinner;
-    TextView nameField;
+public class SubmitOrder extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
+    TextView displayItem, drinkPrice, nameField;
+    String getdrinkItem, getDrinkPrice, finalIce, finalSweetness, finalToppings;
+    Spinner sweetnessSpinner, iceSpinner;
+    CheckBox checkTapiocaP, checkAgarP, checkCoconutJ, checkRainbowJ, checkCoffeeJ, checkGrassJ, checkPudding, checkRedBean, checkTopCream;
 
-    Button submit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,13 +45,12 @@ public class SubmitOrder extends AppCompatActivity implements AdapterView.OnItem
             public void onClick(View view) {
                 DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("orders").push();
                 Map<String, Object> map = new HashMap<>();
-                map.put("submittername", nameField.toString());
+                map.put("submittername", nameField.getText().toString());
                 map.put("drink", getdrinkItem);
                 map.put("price", getDrinkPrice);
                 map.put("ice", finalIce);
                 map.put("sweetness", finalSweetness);
-
-                //map.put("toppings", TOPPINGARRAY);
+                map.put("toppings", finalToppings);
 
                 //All I did was add the rest of the fields, you need to complete it cuz i dunno how to get the data from this code
                 //Note that the toppings are an array, check Drink class for more info on how it works
@@ -77,6 +70,19 @@ public class SubmitOrder extends AppCompatActivity implements AdapterView.OnItem
         sweetnessSpinner = findViewById(R.id.sweetnessSelector);
         iceSpinner = findViewById(R.id.iceSelector);
         nameField = findViewById(R.id.nameField);
+        checkTapiocaP = findViewById(R.id.checkTapiocaP);
+        checkAgarP = findViewById(R.id.checkAgarP);
+        checkCoconutJ = findViewById(R.id.checkCoconutJ);
+        checkRainbowJ = findViewById(R.id.checkRainbowJ);
+        checkCoffeeJ = findViewById(R.id.checkCoffeeJ);
+        checkGrassJ = findViewById(R.id.checkGrassJ);
+        checkPudding = findViewById(R.id.checkPudding);
+        checkRedBean = findViewById(R.id.checkRedBean);
+        checkTopCream = findViewById(R.id.checkTopCream);
+
+
+        finalToppings = "";
+
 
 
         getdrinkItem = getIntent().getExtras().getString("com.example.activities.DRINK_NAME");
@@ -119,6 +125,57 @@ public class SubmitOrder extends AppCompatActivity implements AdapterView.OnItem
     public void onCheckboxClicked(View view){
         boolean checked = ((CheckBox) view).isChecked();
 
+        switch(view.getId()){
+            case R.id.checkTapiocaP:
+                if(checked){
+                    finalToppings += "Tapioca, ";
+                }
+                break;
+            case R.id.checkAgarP:
+                if(checked){
+                    finalToppings += "Agar, ";
+                }
+                break;
+            case R.id.checkCoconutJ:
+                if(checked){
+                    finalToppings += "Coconut Jelly, ";
+                }
+                break;
+            case R.id.checkRainbowJ:
+                if(checked){
+                    finalToppings += "Rainbow Jelly, ";
+                }
+                break;
+            case R.id.checkCoffeeJ:
+                if(checked){
+                    finalToppings += "Coffee Jelly, ";
+                }
+                break;
+            case R.id.checkGrassJ:
+                if(checked){
+                    finalToppings += "Grass Jelly, ";
+                }
+                break;
+            case R.id.checkPudding:
+                if(checked){
+                    finalToppings += "Pudding, ";
+                }
+                break;
+            case R.id.checkRedBean:
+                if(checked){
+                    finalToppings += "Red Bean, ";
+                }
+                break;
+            case R.id.checkTopCream:
+                if(checked){
+                    finalToppings += "Top Cream, ";
+                }
+                break;
+        }
+
+
+
+
     }
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -137,4 +194,6 @@ public class SubmitOrder extends AppCompatActivity implements AdapterView.OnItem
     public void onNothingSelected(AdapterView<?> parent) {
 
     }
+
+
 }
