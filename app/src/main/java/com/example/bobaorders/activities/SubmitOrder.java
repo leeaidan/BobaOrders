@@ -1,5 +1,6 @@
 package com.example.bobaorders.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.bobaorders.R;
@@ -57,6 +58,10 @@ public class SubmitOrder extends AppCompatActivity implements AdapterView.OnItem
                 databaseReference.setValue(map);
                 Snackbar.make(view, "Order Submitted", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+
+                Toast.makeText(SubmitOrder.this, "Thank you for ordering " + nameField.getText().toString() + "! You order for " + getdrinkItem + " has been placed", Toast.LENGTH_LONG).show();
+                Intent backToMain = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(backToMain);
             }
         });
 
