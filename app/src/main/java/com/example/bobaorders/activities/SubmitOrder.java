@@ -52,7 +52,7 @@ public class SubmitOrder extends AppCompatActivity implements AdapterView.OnItem
                 DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("orders").push();
                 Map<String, Object> map = new HashMap<>();
                 map.put("submittername", nameField.getText().toString());
-                map.put("drink", getdrinkItem);
+                map.put("name", getdrinkItem);
                 map.put("price", getDrinkPrice);
                 map.put("ice", finalIce);
                 map.put("sweetness", finalSweetness);

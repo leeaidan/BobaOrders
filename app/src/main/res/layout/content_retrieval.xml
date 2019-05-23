@@ -8,13 +8,6 @@
     tools:context=".activities.RetrievalActivity"
     tools:showIn="@layout/activity_retrieval">
 
-    <CalendarView
-        android:id="@+id/calendarView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="30dp"
-        tools:layout_editor_absoluteY="53dp" />
-
     <LinearLayout
         android:id="@+id/loginSuccess"
         android:layout_width="395dp"

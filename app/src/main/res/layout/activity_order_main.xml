@@ -49,17 +49,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="70dp"
-        android:text="Button" />
+        android:text="Submit" />
 
     <EditText
         android:id="@+id/editText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name"
         app:layout_anchor="@+id/include"
         app:layout_anchorGravity="top|center"
-        android:layout_marginTop="70dp"/>
+        tools:text="Add Drink" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

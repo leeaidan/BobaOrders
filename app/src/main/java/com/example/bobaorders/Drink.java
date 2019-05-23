@@ -1,13 +1,12 @@
 package com.example.bobaorders;
 
-import java.util.ArrayList;
 
 public class Drink {
     private String name;
     private String price;
     private String ice = "100% Ice";
     private String sweetness = "100% Sweetness";
-    private ArrayList<Toppings> toppings = new ArrayList<Toppings>();
+    private String toppings = "None";
 
     public Drink(){
 
@@ -50,26 +49,13 @@ public class Drink {
         this.sweetness = sweetness;
     }
 
-    public ArrayList<Toppings> getToppings() {
+    public String getToppings() {
         return toppings;
     }
 
-    public void addToppings(Toppings topping){
-        toppings.add(topping);
+    public void setToppings(String toppings) {
+        this.toppings = toppings;
     }
 
-    public enum Toppings {
-        NONE("None"), TAPIOCA("Tapioca Pearls"), AGAR("Agar Pearls"), COCONUT_JELLY("Coconut Jelly"),
-        RAINBOW_JELLY("Rainbow Jelly"); //TODO: Add more, add a second field for the price for calculation purposes
-
-        String s;
-        Toppings(String s){
-            this.s = s;
-        }
-
-        public String getString(){
-            return s;
-        }
-    }
 
 }
