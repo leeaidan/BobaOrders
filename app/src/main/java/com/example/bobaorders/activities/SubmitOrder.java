@@ -51,7 +51,7 @@ public class SubmitOrder extends AppCompatActivity implements AdapterView.OnItem
             public void onClick(View view) {
                 DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("orders").push();
                 Map<String, Object> map = new HashMap<>();
-                map.put("submittername", nameField.toString());
+                map.put("submittername", nameField.getText().toString());
                 map.put("drink", getdrinkItem);
                 map.put("price", getDrinkPrice);
                 map.put("ice", finalIce);
@@ -62,7 +62,7 @@ public class SubmitOrder extends AppCompatActivity implements AdapterView.OnItem
                 //All I did was add the rest of the fields, you need to complete it cuz i dunno how to get the data from this code
                 //Note that the toppings are an array, check Drink class for more info on how it works
                 databaseReference.setValue(map);
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, "Order Submitted", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
         });
@@ -94,12 +94,6 @@ public class SubmitOrder extends AppCompatActivity implements AdapterView.OnItem
         iceAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
         iceSpinner.setAdapter(iceAdapter);
         iceSpinner.setOnItemSelectedListener(this);
-
-
-        //TODO: This is your job Aidan xDDDDDD
-        //So I actually have no idea how Buttons work so you're gonna need to check my work on this, I just copy pasted from OrderMainActivity
-    //    submit = findViewById(R.id.buttonSubmit);
-
 
 
     }
