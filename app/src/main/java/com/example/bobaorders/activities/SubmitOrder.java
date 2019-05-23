@@ -66,7 +66,7 @@ public class SubmitOrder extends AppCompatActivity implements AdapterView.OnItem
         }
 
         displayItem = findViewById(R.id.drinkName);
-        drinkPrice = findViewById(R.id.totalPrice);
+        drinkPrice = findViewById(R.id.price);
         sweetnessSpinner = findViewById(R.id.sweetnessSelector);
         iceSpinner = findViewById(R.id.iceSelector);
         nameField = findViewById(R.id.nameField);

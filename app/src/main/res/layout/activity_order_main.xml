@@ -48,18 +48,19 @@
         android:id="@+id/buttonSubmit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="60dp"
         android:text="Submit" />
 
     <EditText
         android:id="@+id/editText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginLeft="85dp"
         android:ems="10"
         android:inputType="textPersonName"
         app:layout_anchor="@+id/include"
-        app:layout_anchorGravity="top|center"
+
         tools:text="Add Drink" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

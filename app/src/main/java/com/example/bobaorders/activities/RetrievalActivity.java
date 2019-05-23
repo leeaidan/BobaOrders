@@ -19,6 +19,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -74,10 +75,16 @@ public class RetrievalActivity extends AppCompatActivity {
          adapter = new FirebaseRecyclerAdapter<Drink, OrderHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull OrderHolder orderHolder, int i, @NonNull Drink drink) {
-                orderHolder.setTxtPrice(drink.getPrice());
-                orderHolder.setTxtTitle(drink.getName());
+                orderHolder.setDrinkName(drink.getName());
+                Log.i("price", drink.getPrice());
+                orderHolder.setPrice(drink.getPrice());
+                orderHolder.setSweetness(drink.getSweetness());
+                orderHolder.setIce(drink.getIce());
+                orderHolder.setToppings(drink.getToppings());
+                orderHolder.setDrinkName(drink.getName());
+                orderHolder.setSubmitterName(drink.getSubmittername());
 
-                Toast.makeText(RetrievalActivity.this, "At position " + i + " is " + drink.getName() + " which costs " + drink.getPrice(), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(RetrievalActivity.this, "At position " + i + " is " + drink.getName() + " which costs " + drink.getPrice(), Toast.LENGTH_SHORT).show();
 
                 //TODO: Bind the rest of the values (ice, sweetness, toppings) to the layout
             }
@@ -110,29 +117,49 @@ public class RetrievalActivity extends AppCompatActivity {
     }
 
     public class OrderHolder extends RecyclerView.ViewHolder {
-        public LinearLayout root;
-        public TextView mTitle;
-        public TextView mPrice;
+        private LinearLayout leftCol;
+        private TextView mDrinkName;
+        private TextView mSweetness;
+        private TextView mIce;
+        private TextView mToppings;
 
-        //TODO: Add the rest of the required fields for the toppings, ice, sweetness, etc
+        private LinearLayout rightCol;
+        private TextView mPrice;
+        private TextView mSubmitterName;
 
         public OrderHolder(@NonNull View itemView) {
             super(itemView);
-            root = itemView.findViewById(R.id.root2);
-            mTitle = itemView.findViewById(R.id.item_title2);
-            mPrice = itemView.findViewById(R.id.item_price2);
+            leftCol = itemView.findViewById(R.id.leftCol);
+            mDrinkName = itemView.findViewById(R.id.drinkname);
+            mSweetness = itemView.findViewById(R.id.sweetness);
+            mIce = itemView.findViewById(R.id.ice);
+            mToppings = itemView.findViewById(R.id.toppings);
 
-            //TODO: Add the rest of the required fields for the toppings, ice, sweetness, etc
+            rightCol = itemView.findViewById(R.id.rightCol);
+            mPrice = itemView.findViewById(R.id.item_price);
+            mSubmitterName = itemView.findViewById(R.id.submitter_name);
 
         }
 
-        public void setTxtPrice(String str) {
-            mPrice.setText(str);
+        public void setDrinkName(String s) {
+            mDrinkName.setText(s);
+        }
+        public void setSweetness(String s) {
+            mSweetness.setText(s);
+        }
+        public void setIce(String s) {
+            mIce.setText(s);
+        }
+        public void setToppings(String s) {
+            mToppings.setText(s);
+        }
+        public void setPrice(String s) {
+            mPrice.setText(s);
+        }
+        public void setSubmitterName(String s) {
+            mSubmitterName.setText(s);
         }
 
-        public void setTxtTitle(String str) {
-            mTitle.setText(str);
-        }
     }
 
     protected void onStart() {

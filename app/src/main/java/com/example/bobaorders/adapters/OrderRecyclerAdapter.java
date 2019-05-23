@@ -43,9 +43,9 @@ public class OrderRecyclerAdapter extends FirebaseRecyclerAdapter<Drink, OrderRe
     }
 
     public class MenuHolder extends RecyclerView.ViewHolder {
-        public LinearLayout root;
-        public TextView mTitle;
-        public TextView mPrice;
+        private LinearLayout root;
+        private TextView mTitle;
+        private TextView mPrice;
 
         public MenuHolder(@NonNull View itemView) {
             super(itemView);

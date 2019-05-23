@@ -7,6 +7,7 @@ public class Drink {
     private String ice = "100% Ice";
     private String sweetness = "100% Sweetness";
     private String toppings = "None";
+    private String submittername = "";
 
     public Drink(){
 
@@ -57,5 +58,11 @@ public class Drink {
         this.toppings = toppings;
     }
 
+    public String getSubmittername() {
+        return submittername;
+    }
 
+    public void setSubmittername(String submitter) {
+        this.submittername = submitter;
+    }
 }
